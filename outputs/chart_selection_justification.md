@@ -1,8 +1,8 @@
 # Chart Selection Justification
 
-## Objective
+## Overview
 
-The dashboard was designed to provide retail executives with a clear overview of business performance by highlighting sales trends, profitability, customer behavior, regional performance, and the impact of discounts. Each visualization was selected to answer a specific business question while following Tableau visualization best practices.
+The Executive Dashboard was designed to provide retail leadership with a concise, interactive view of business performance. Each visualization was selected based on the business question it answers, following data visualization best practices to ensure clarity, accuracy, and effective decision-making.
 
 ---
 
@@ -11,101 +11,105 @@ The dashboard was designed to provide retail executives with a clear overview of
 **Chart Type:** Line Chart
 
 ### Business Question
-How have sales changed over time?
+How has monthly sales performance changed over time?
 
-### Why this chart?
-A line chart is the most appropriate visualization for displaying trends over time because it clearly shows increases, decreases, and seasonal patterns in monthly sales.
+### Why This Chart?
+A line chart is the most suitable visualization for time-series data because it clearly shows trends, growth patterns, and seasonal fluctuations across months.
 
 ### Fields Used
-- **Columns:** Month(Order Date)
+- **Columns:** Order Date (Month)
 - **Rows:** SUM(Sales)
+- **Label:** Monthly Sales
+- **Filters:** Region, Category, Customer Segment, Ship Mode
 
-### Design Principles Applied
-- Chronological order maintained.
-- Minimal clutter by avoiding unnecessary visual elements.
-- Readable title and axis labels.
-- Consistent formatting.
+### Design Principle Applied
+- Used chronological ordering to preserve the time sequence.
+- Maintained a clean layout with minimal visual clutter.
+- Added a clear title and formatted axes for readability.
 
-### Mistakes Avoided
-- Did not use a bar chart for time-series data.
-- Avoided misleading scales by starting the axis at zero.
+### Mistake Avoided
+Avoided using a bar chart or pie chart, which would make it difficult to identify sales trends over time.
 
 ---
 
-# 2. Regional Sales & Profit Performance
+# 2. Regional Performance
 
 **Chart Type:** Horizontal Bar Chart
 
 ### Business Question
-Which regions generate the highest sales and profit?
+Which regions generate the highest sales?
 
-### Why this chart?
-A horizontal bar chart makes it easy to compare performance across regions and quickly identify the best and worst performing areas.
+### Why This Chart?
+A horizontal bar chart allows easy comparison between regions and accommodates region names without reducing readability.
 
 ### Fields Used
 - **Rows:** Region
 - **Columns:** SUM(Sales)
-- **Color:** SUM(Profit)
+- **Color:** Profit
+- **Label:** Sales Value
+- **Filters:** Category, Customer Segment, Ship Mode
 
-### Design Principles Applied
-- Regions sorted by sales in descending order.
-- Color intensity represents profit performance.
-- Labels improve readability.
+### Design Principle Applied
+- Sorted regions in descending order of sales.
+- Used color to represent profit, adding another layer of insight without increasing clutter.
+- Displayed labels for quick comparison.
 
-### Mistakes Avoided
-- Avoided pie charts, which make regional comparisons difficult.
-- Used consistent color encoding for profit.
+### Mistake Avoided
+Avoided pie charts because comparing multiple regions is much easier with aligned bar lengths.
 
 ---
 
-# 3. Category & Sub-Category Profitability
+# 3. Category Profitability
 
 **Chart Type:** Horizontal Bar Chart
 
 ### Business Question
 Which product categories and sub-categories contribute the most profit?
 
-### Why this chart?
-Horizontal bars effectively compare profitability across multiple categories and sub-categories while accommodating long category names.
+### Why This Chart?
+A horizontal bar chart is ideal for comparing profitability across many categories and sub-categories while keeping long labels readable.
 
 ### Fields Used
-- **Rows:** Category, Sub-Category
+- **Rows:** Category and Sub-Category
 - **Columns:** SUM(Profit)
+- **Color:** Category
+- **Label:** Profit
+- **Filters:** Region, Customer Segment, Ship Mode
 
-### Design Principles Applied
-- Descending sorting highlights the most profitable products first.
-- Consistent color scheme across categories.
-- Clear labels improve interpretation.
+### Design Principle Applied
+- Sorted bars by profit to highlight top-performing products.
+- Applied consistent category colors throughout the dashboard.
+- Used clear labels to improve readability.
 
-### Mistakes Avoided
-- Avoided stacked charts that could hide individual profitability.
-- Maintained consistent sorting for easy comparison.
+### Mistake Avoided
+Avoided stacked charts that could hide differences in individual category profitability.
 
 ---
 
-# 4. Sales by Customer Segment
+# 4. Customer Segment Performance
 
 **Chart Type:** Stacked Bar Chart
 
 ### Business Question
-How does sales performance vary across customer segments and product categories?
+How is sales distributed across customer segments and product categories?
 
-### Why this chart?
-A stacked bar chart allows comparison of total sales by customer segment while also showing each category's contribution within the segment.
+### Why This Chart?
+A stacked bar chart compares total sales across customer segments while also showing each product category's contribution within the segment.
 
 ### Fields Used
 - **Columns:** Customer Segment
 - **Rows:** SUM(Sales)
 - **Color:** Category
+- **Label:** Sales
+- **Filters:** Region, Ship Mode
 
-### Design Principles Applied
-- Consistent category colors.
-- Clear segment comparison.
-- Data labels added for readability.
+### Design Principle Applied
+- Used consistent category colors across the dashboard.
+- Displayed category contribution without sacrificing total comparison.
+- Maintained clear labels and readable titles.
 
-### Mistakes Avoided
-- Avoided pie charts because comparing multiple segments is easier with stacked bars.
-- Prevented unnecessary visual clutter.
+### Mistake Avoided
+Avoided multiple separate bar charts, which would make segment comparisons less efficient.
 
 ---
 
@@ -114,46 +118,47 @@ A stacked bar chart allows comparison of total sales by customer segment while a
 **Chart Type:** Scatter Plot
 
 ### Business Question
-How do discounts influence profitability?
+How do discounts affect profitability?
 
-### Why this chart?
-A scatter plot is the most appropriate visualization for identifying relationships, trends, clusters, and outliers between two numerical variables.
+### Why This Chart?
+A scatter plot is the most effective chart for identifying relationships, trends, clusters, and outliers between two continuous variables.
 
 ### Fields Used
 - **Columns:** Discount
 - **Rows:** Profit
-- **Detail:** Order ID
 - **Color:** Category
 - **Size:** Sales
+- **Detail:** Order ID
+- **Trend Line:** Linear Trend
+- **Filters:** Region, Customer Segment, Ship Mode
 
-### Design Principles Applied
-- Trend line added to identify overall relationship.
-- Zero-profit reference line highlights loss-making orders.
-- Different colors distinguish product categories.
+### Design Principle Applied
+- Added a trend line to show the overall relationship between discount and profit.
+- Used color to distinguish product categories.
+- Included individual marks to reveal outliers.
 
-### Mistakes Avoided
-- Avoided bar charts because they cannot effectively display relationships between two continuous variables.
-- Prevented misleading interpretation by displaying individual orders instead of aggregated values.
+### Mistake Avoided
+Avoided aggregating the data into bars, which would hide the relationship between individual orders, discounts, and profits.
 
 ---
 
 # Dashboard Design Principles
 
-The executive dashboard follows key visualization best practices:
+The dashboard follows key visualization best practices:
 
 - Appropriate chart types selected for each business question.
-- Clear visual hierarchy with KPI cards positioned at the top.
-- Consistent color usage throughout the dashboard.
-- Minimal clutter by avoiding unnecessary decorations.
-- Readable chart titles and labels.
-- Logical sorting of categories and regions.
-- Interactive filters (Region, Category, Customer Segment, Ship Mode) support focused analysis.
-- Action filter enables dynamic exploration by allowing users to click on a region and update the entire dashboard.
-- Consistent scales and formatting improve readability and prevent misleading interpretations.
+- Clear visual hierarchy with KPI cards placed at the top.
+- Consistent color usage across visualizations.
+- Minimal clutter to improve readability.
+- Clear titles, labels, and formatted values.
+- Logical sorting for easier comparison.
+- Interactive filters (Region, Category, Customer Segment, and Ship Mode) support focused analysis.
+- Action filter enables users to click on a region and dynamically update the remaining dashboard views.
+- Consistent scales and formatting prevent misleading interpretation.
 - Dashboard emphasizes business insights and decision-making rather than displaying raw data.
 
 ---
 
-# Summary
+# Conclusion
 
-The selected visualizations were chosen to answer specific business questions while ensuring clarity, readability, and ease of interpretation. Together, the charts provide leadership with a comprehensive view of sales performance, profitability, customer behavior, regional performance, and discount effectiveness, enabling informed business decisions.
+Each chart was selected to answer a specific business question while following visualization best practices. Together, the dashboard enables leadership to monitor sales performance, identify profitable regions and product categories, understand customer behavior, evaluate discount strategies, and make informed business decisions through an interactive and easy-to-understand interface.
